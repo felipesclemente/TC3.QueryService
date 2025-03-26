@@ -1,0 +1,4 @@
+services:
+  contatos.queryservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

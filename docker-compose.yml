@@ -1,0 +1,17 @@
+services:
+  contatos.queryservice:
+    image: ${DOCKER_REGISTRY-}contatosqueryservice
+    build:
+      context: .
+      dockerfile: Contatos.QueryService/Dockerfile
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_USER: "postgres"
+    ports:
+    - "5432:5432"
+    volumes:
+    - ./create_regiao.sql:/docker-entrypoint-initdb.d/create_regiao.sql
+    - ./create_contato.sql:/docker-entrypoint-initdb.d/create_contato.sql
